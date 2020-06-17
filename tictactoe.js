@@ -90,7 +90,8 @@ function checkArrayForWin(gameboard) {
   return false;
 }
 
-// return an array with only unique values
+// In order to make an array with only unique values
+// returns if this is the first instance of this character or not
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
