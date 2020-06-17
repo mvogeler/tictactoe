@@ -12,18 +12,21 @@ let board = [['o','x','o','x'],['x','o','x','x'],['x','o','o',''],['','x','x','o
 checkWin(board);
 
 function checkWin(gameboard) {
-  let winner = "";
+  let winner = '';
   // check rows
   winner = checkArrayForWin(gameboard);
-  
-  // check columns
-  let rotatedBoard = rotateBoard(gameboard);
-  winner = checkArrayForWin(rotatedBoard);
 
-  // check cross pattern
-  let crossBoard = getDiagonals(gameboard);
-  winner = checkArrayForWin(crossBoard);
-  
+  if (winner === '') {
+    // check columns
+    let rotatedBoard = rotateBoard(gameboard);
+    winner = checkArrayForWin(rotatedBoard);
+  }
+
+  if (winner === '') {
+    // check cross pattern
+    let crossBoard = getDiagonals(gameboard);
+    winner = checkArrayForWin(crossBoard);
+  }
   // declare no winner
   if (winner === '') {
     console.log('There is no winner');
