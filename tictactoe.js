@@ -12,26 +12,23 @@ let board = [['o','x','o','x'],['x','o','x','x'],['x','o','o',''],['','x','x','o
 checkWin(board);
 
 function checkWin(gameboard) {
-  let winner = '';
   // check rows
-  winner = checkArrayForWin(gameboard);
+  let hasWinner = checkArrayForWin(gameboard) 
 
-  if (winner === '') {
+  if (!hasWinner) {
     // check columns
     let rotatedBoard = rotateBoard(gameboard);
-    winner = checkArrayForWin(rotatedBoard);
+    hasWinner = checkArrayForWin(rotatedBoard);
   }
 
-  if (winner === '') {
+  if (!hasWinner) {
     // check cross pattern
     let crossBoard = getDiagonals(gameboard);
-    winner = checkArrayForWin(crossBoard);
+    hasWinner = checkArrayForWin(crossBoard);
   }
-  // declare no winner
-  if (winner === '') {
-    console.log('There is no winner');
-  } else {
-    console.log(winner + ' wins');
+
+  if (!hasWinner) {
+    console.log('No winner found.');
   }
 }
 
@@ -83,7 +80,14 @@ function checkArrayForWin(gameboard) {
       winCharacter = unique;
     }
   });
-  return winCharacter;
+
+  // declare no winner
+  if (winCharacter != '') {
+    console.log(winCharacter + ' wins');
+    return true;
+  }
+
+  return false;
 }
 
 // return an array with only unique values
