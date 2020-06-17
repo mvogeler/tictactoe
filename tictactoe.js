@@ -81,7 +81,7 @@ function checkArrayForWin(gameboard) {
     }
   });
 
-  // declare no winner
+  // check for a winner
   if (winCharacter != '') {
     console.log(winCharacter + ' wins');
     return true;
